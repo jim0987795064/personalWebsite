@@ -3,6 +3,8 @@ FROM gradle:8.7-jdk17 AS build
 WORKDIR /app
 # 複製專案檔案
 COPY . .
+# 新增這一行：賦予 gradlew 執行權限
+RUN chmod +x gradlew
 # 執行編譯，跳過測試以節省時間與記憶體
 RUN ./gradlew build -x test --no-daemon
 
